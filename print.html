@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>입주자대표회의 참고자료 - 헬스장 관리인 설문 및 소통 내역 요약</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 14mm 15mm 14mm 15mm;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    font-size: 10pt;
+    line-height: 1.55;
+    color: #111;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .page-sheet {
+    max-width: 180mm;
+    margin: 0 auto;
+    background: #fff;
+    padding: 16px 22px 24px 22px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
+  /* 상단 인쇄 버튼 (인쇄 시 숨김) */
+  .toolbar {
+    max-width: 180mm;
+    margin: 0 auto 12px auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  .print-btn {
+    padding: 8px 16px;
+    font-size: 9.5pt;
+    font-weight: bold;
+    font-family: inherit;
+    color: #fff;
+    background: #222;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .print-btn:hover {
+    background: #000;
+  }
+
+  /* 문서 헤더 */
+  .doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    border-bottom: 2.5px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+  }
+  .doc-header-text {
+    flex: 1;
+  }
+  h1 {
+    font-size: 15.5pt;
+    margin: 0 0 6px 0;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+  }
+  .doc-meta {
+    font-size: 9pt;
+    color: #444;
+    margin: 0;
+  }
+  .doc-meta a {
+    color: #111;
+    text-decoration: underline;
+  }
+  .qr-box {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 4px;
+    background: #fff;
+    flex-shrink: 0;
+  }
+  .qr-box img {
+    width: 68px;
+    height: 68px;
+    display: block;
+    margin: 0 auto;
+  }
+  .qr-caption {
+    font-size: 7.5pt;
+    font-weight: bold;
+    color: #222;
+    margin-top: 2px;
+  }
+
+  /* 안내 박스 */
+  .notice-box {
+    border: 1.5px solid #222;
+    background-color: #f9f9f9;
+    padding: 10px 13px;
+    margin-bottom: 16px;
+    font-size: 9.3pt;
+    line-height: 1.5;
+  }
+  .notice-box p {
+    margin: 0 0 5px 0;
+  }
+  .notice-box p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* 대제목 (섹션) */
+  h2 {
+    font-size: 11.5pt;
+    color: #fff;
+    background-color: #1f2937;
+    padding: 6px 11px;
+    margin: 18px 0 10px 0;
+    border-radius: 2px;
+    page-break-after: avoid;
+    break-after: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* 개별 항목 카드 */
+  .item {
+    border: 1px solid #bbb;
+    border-left: 3.5px solid #333;
+    padding: 9px 12px;
+    margin-bottom: 9px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .item.critical {
+    border-left: 4px solid #b91c1c;
+    background-color: #fffafa;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .item-title {
+    font-size: 10.3pt;
+    font-weight: bold;
+    color: #000;
+    margin: 0 0 6px 0;
+  }
+  .item.critical .item-title {
+    color: #991b1b;
+  }
+  .item ul {
+    margin: 0 0 7px 0;
+    padding-left: 17px;
+  }
+  .item li {
+    margin-bottom: 4px;
+  }
+  .item li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* 근거 박스 */
+  .evidence {
+    border-top: 1px dashed #ccc;
+    padding-top: 6px;
+    margin-top: 6px;
+    font-size: 8.8pt;
+    color: #333;
+  }
+  .evidence-label {
+    font-weight: bold;
+    color: #111;
+    margin-right: 4px;
+  }
+  .evidence-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    margin-top: 3px;
+  }
+  .ev-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .ref-badge {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 8.2pt;
+    color: #111;
+    background: #eaeaea;
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 0 4px;
+    text-decoration: none;
+    white-space: nowrap;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .ref-badge:hover {
+    background: #d00000;
+    color: #fff;
+    border-color: #d00000;
+  }
+
+  /* 하단 푸터 */
+  .doc-footer {
+    margin-top: 16px;
+    padding-top: 8px;
+    border-top: 1px solid #999;
+    font-size: 8.5pt;
+    color: #555;
+    text-align: right;
+  }
+
+  @media print {
+    body {
+      background: #fff;
+      padding: 0;
+      font-size: 9.5pt;
+      line-height: 1.5;
+    }
+    .toolbar {
+      display: none !important;
+    }
+    .page-sheet {
+      max-width: none;
+      width: 100%;
+      padding: 0;
+      box-shadow: none;
+    }
+    h2 {
+      background-color: #1f2937 !important;
+      color: #fff !important;
+    }
+    .item.critical {
+      background-color: #fff8f8 !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button class="print-btn" type="button" onclick="window.print()">🖨️ A4 인쇄 / PDF 저장</button>
+</div>
+
+<div class="page-sheet">
+
+  <div class="doc-header">
+    <div class="doc-header-text">
+      <h1>입주자대표회의 참고자료: 헬스장 관리인 설문 및 소통 내역 요약</h1>
+      <p class="doc-meta">
+        작성: 1918동 입주민 &nbsp;|&nbsp; 원문 전체 기록: <a href="https://drasticjh-gif.github.io/aptner/content.html" target="_blank">https://drasticjh-gif.github.io/aptner/content.html</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="notice-box">
+    <p>※ 본 자료는 특정인을 저격하거나 비방하려는 의도가 아닌, 금일 입대의에서 사실관계를 확인하기 위한 참고 자료로 작성하였습니다.</p>
+    <p>아래 내용은 <strong>① 동대표의 부적절한 소통 태도</strong>, <strong>② 끝까지 명확히 답변하지 않은 사항</strong>, <strong>③ 입주민 발언 왜곡, 인신공격 및 사적 동선 언급을 통한 압박</strong> 순으로 정리되어 있습니다.</p>
+  </div>
+
+  <!-- ================= 섹션 1 ================= -->
+  <h2>1. 동대표의 부적절한 소통 태도 (비꼼·조롱·소통 거부)</h2>
+
+  <div class="item">
+    <div class="item-title">1-1. 초반부터 방어적이고 날 선 응대 및 핀잔</div>
+    <ul>
+      <li>노고에 감사를 표하며 설문 보완을 제안한 첫 댓글에 "뭔가 크게 착각하시는 것 같은데...", "#설.문.조.사#", "설문 내용은 보셨습니까?", "이 얘기도 몇 번씩 하는데" 등으로 대응함. 입주민이 날카로운 어조에 당혹감을 표하며 본인 표현을 되돌아본 뒤 재차 정중히 설명했으나 태도가 바뀌지 않음.</li>
+      <li>놓친 공식 공지 창구가 있는지 정중히 문의하자, 별도 공식 공지 없이 타인의 항의 글 댓글에 적었을 뿐이면서 "여러 번 했다는 말에 크게 의미를 두시네요. 그러실 필요 없습니다. 못 보셨을 테니까요"라며 핀잔.</li>
+    </ul>
+    <div class="evidence">
+      <div class="evidence-list">
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#1" target="_blank">#1</a> 입주민: 노고 감사 및 첫 제안</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#2" target="_blank">#2</a> 동대표: 첫 방어적·공격적 답변</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#3" target="_blank">#3</a> 입주민: 본인 표현 되돌아보며 재차 정중히 답변</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#11" target="_blank">#11</a> 입주민: 공지 창구 정중히 문의</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#12" target="_blank">#12</a> 동대표: 핀잔성 답변</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">1-2. 입주민 의견을 읽지도 않고 '말이 안 통한다'고 단정</div>
+    <ul>
+      <li>"말이 안 통하는 것 같아서요"라며 일방적으로 소통을 거부. 이후 "사실 선생님 댓글 너무 길어서 아예 안 읽었습니다", "내용도 길어서 답 안 드립니다"</li>
+    </ul>
+    <div class="evidence">
+      
+      <div class="evidence-list">
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#8" target="_blank">#8</a> 동대표: 소통 거부 발언</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#p3" target="_blank">#p3</a> 동대표: 댓글 미열람 시인 본문</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#14" target="_blank">#14</a> 동대표: 길어서 답 안 함 댓글</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">1-3. 안건에도 없는 회의 참석을 종용한 뒤 앞뒤 안 맞는 수정 및 조롱</div>
+    <ul>
+      <li>먼저 설명 없이 "입대의 회의에 참석해세요"라고 해놓고, 입주민이 소집공고에 안건이 없음을 확인하고 답변을 작성하는 사이 댓글을 수정해 "안건이 있나 없나 확인해 보세요... 에휴... 참 답답하십니다" 추가.</li>
+      <li>3차 글 및 댓글에서도 "와서는 무슨 얘기를 하실 건지...", "똑같은 말 계속하게 하는 능력이 아주 뛰어나세요 대단하십니다 ㅋㅋ" 등 지속적인 비꼼과 조롱을 반복함.</li>
+    </ul>
+    <div class="evidence">
+      
+      <div class="evidence-list">
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#8" target="_blank">#8</a> 동대표: 참석 종용 후 뒤늦게 안건 부재 추가 수정</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#p3" target="_blank">#p3</a> 동대표: 3차 글 비꼼</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#17" target="_blank">#17</a> 동대표: 조롱성 댓글</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">1-4. 참석 확정 및 대화 종료 선언 이후에도 여러 댓글에 걸쳐 반복된 공격적 참석 종용</div>
+    <ul>
+      <li>입주민이 참석 의사를 몇차례 밝히고 소모적인 댓글 논쟁을 하지 않겠다고 선언했음에도, 그 이후에도 여러 댓글에 걸쳐 "회의날 뵈요 꼭이요!!!", "ㅋㅋㅋ 미치겠네... 꼭 오세요 회의 진짜 안 오시면 안 됩니다. 알겠죠?", "회의 나오실 거죠? ㅋㅋㅋ 꼭 오세요" 등 마치 회피하려는 사람처럼 몰아가며 공격적인 발언을 반복함.</li>
+    </ul>
+    <div class="evidence">
+      
+      <div class="evidence-list">
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#p3" target="_blank">#p3</a> 동대표: 3차 글 참석 종용</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#18" target="_blank">#18</a> 입주민: 댓글 종료 및 참석 확정 선언</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#19" target="_blank">#19</a> 동대표: 자진 삭제된 공격적 종용 댓글</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#20" target="_blank">#20</a> 동대표: 교체 게시된 조롱성 종용 댓글</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 섹션 2 ================= -->
+  <h2>2. 동대표가 글을 3개, 댓글을 8개나 작성·삭제하면서 끝까지 명확히 답변하지 않은 사항</h2>
+
+  <div class="item">
+    <div class="item-title">2-1. 설문 문항 보완(추가 정보 병기 및 전체 대상 질문 설계) 제안 미답변</div>
+    <ul>
+      <li>입주민의 합리적인 선택을 돕기 위해 각 선택지에 객관적 수치와 부족분 충당 방안(PT 연계 등)을 함께 안내해 달라고 제안했으나 답변하지 않음.</li>
+      <li>관리인 상주 찬성자에게만 추가 질문은 결과 해석에 오류가 생길 수 있으므로, 상주 반대자까지 포함해 전체 입주민을 대상으로 설문을 보완해 달라는 제안에도 끝내 답하지 않음.</li>
+    </ul>
+    <div class="evidence">
+      
+      <div class="evidence-list">
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#1" target="_blank">#1</a> 입주민: 조건부 설계 오류 지적</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#7" target="_blank">#7</a> 입주민: 선택지 수치·PT 보전 안내 제안</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#9" target="_blank">#9</a> 입주민: 수치 병기 재요청</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">2-2. 예산 산출 근거 및 부족분 충당 방안에 대한 구체적 설명 미흡</div>
+    <ul>
+      <li>설문 항목에서 인건비 대비 적자 및 여우분이 발생하는 경우, 그 보안 및 처리 방안과 선택지의 산출 근거에 대해 끝까지 구체적인 설명을 내놓지 않음.</li>
+    </ul>
+    <div class="evidence">
+      
+      <div class="evidence-list">
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#1" target="_blank">#1</a> 입주민: 예산·부족분 첫 질의</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#2" target="_blank">#2</a> 동대표: 개인 PT 연계 두루뭉실 언급</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#3" target="_blank">#3</a> 입주민: 월 85만 원 vs 150만 원 적자 및 PT 보전 규모 재질의</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">2-3. 설문 결과 활용 여부에 대한 모순 미해명</div>
+    <ul>
+      <li>본문에는 "입대의에 공유한다"고 적고, 댓글에서는 "글에 적혀 있듯 아무것도 안 한다". 둘 중 어느 쪽인지 물었으나, 해당 모순에 대해 끝까지 명확한 답변이나 정정을 하지 않음. 문맥상 후자(미활용)로 보이나 끝까지 오해를 일으키는 최초 표현만 반복함.</li>
+    </ul>
+    <div class="evidence">
+      
+      <div class="evidence-list">
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#p2" target="_blank">#p2</a> 동대표: 입대의 공유·사전 정보 활용 본문</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#6" target="_blank">#6</a> 동대표: "위 글에 적혀 있듯 아무것도 안 함" 댓글</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#15" target="_blank">#15</a> 입주민: '입대의 공유' = '아무것도 안 함'인지 모순 지적 및 해명 요청</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">2-4. 설문 폐기 사유 전체 공지 미이행</div>
+    <ul>
+      <li>다수 입주민이 참여한 설문을 사용하지 않기로 했다면 전체 대상 별도 게시글로 폐기 여부와 사유를 공식 안내해 달라고 요청했으나 끝까지 무시함. 심지어 별도 공지를 한 적이 없음에도 "이전 글에서 썼다"며 사실과 다르게 답했다가 지움.</li>
+    </ul>
+    <div class="evidence">
+      
+      <div class="evidence-list">
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#13" target="_blank">#13</a> 입주민: 폐기 사유 공지 요청</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#18" target="_blank">#18</a> 입주민: 별도 게시글 공지 재요청</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#19" target="_blank">#19</a> 동대표: 공지한 적 없는데 "이전 글에서 썼어요" 발언</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 섹션 3 ================= -->
+  <h2>3. 입주민 발언 왜곡, 인신공격 및 사적 동선 언급을 통한 압박</h2>
+
+  <div class="item critical">
+    <div class="item-title">3-1. 사적 동선(키즈카페) 언급을 통한 압박 및 마스크 착용 비아냥</div>
+    <ul>
+      <li>집에 신생아가 있어 감염 예방 차원에서 마스크를 착용했고 참관인 명부에도 신상을 모두 기재했음에도, 얼굴을 숨기려 했다며 비아냥거림.</li>
+      <li>논점과 전혀 무관하게 키즈카페에서의 마주침을 거론함. 상대방이 본인과 아이의 일상 동선을 알고 있다는 식으로 공개 게시판에서 압박하는 태도에 가족들이 소름이 돋고 실제적인 불안을 느껴 단지 내 시설 이용마저 꺼리는 상황.</li>
+    </ul>
+    <div class="evidence">
+      <div class="evidence-list">
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#20" target="_blank">#20</a> 동대표: 마스크 착용 비아냥 및 키즈카페 동선 언급</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">3-2. 헬스장·골프장을 안 쓰면서 시설 개선(지문 인식)을 반대하는 이기적인 입주민이라는 프레임</div>
+    <ul>
+      <li>원래 키즈카페 출입 문제로 의견을 제시했다가 비슷한 시기 헬스장 지문인식 안건에도 의견이 전달된 것이며, 개인정보보호법상 대체 수단 병행 기준을 안내해 추후 민원·과태료 등 행정·법적 사고를 미리 방지하려 한 취지였음. 이를 무시하고 시설 개선을 무조건 반대하는 이기적 입주민으로 매도함.</li>
+      <li>아파트 공용 시설 운영 관련 본인의 이용 여부와 무관하게 입주민 누구나 의견을 낼 수 있는 것이 당연함. 게다가 사실관계상으로도 실제로 헬스장을 이용한 적이 있으며(골프장은 미이용), 당시 회의 중 동대표가 임의로 미이용자라고 오해했으나 안건의 핵심과 무관해 회의 시간을 뺏지 않으려 굳이 정정하지 않음.</li>
+    </ul>
+    <div class="evidence">
+      
+      <div class="evidence-list">
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#20" target="_blank">#20</a> 동대표: 지문인식 반대 프레임 발언</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">3-3. 마치 입주민이 '인건비를 공용 관리비로 충당하려 한다'며 혼자 엉뚱한 오해를 하고 관리비 지출을 무조건 반대하는 사람처럼 호도한 점</div>
+    <ul>
+      <li>최초 댓글부터 적자가 발생할 수 있는 상황이니 그 부족분이 공용 관리비로 메워질 우려가 없는지 조건부로 물은 것일 뿐, 관리비로 충당하려 한다고 단정하거나 정당한 절차를 거친 관리비 지출 자체를 반대한 적이 없음.</li>
+    </ul>
+    <div class="evidence">
+      
+      <div class="evidence-list">
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#1" target="_blank">#1</a> 입주민 최초 원문: 부족분 발생 시 공용 관리비 충당 우려를 조건부로 질의</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#3" target="_blank">#3</a> 입주민 원문: 월 85만 원 vs 150만 원 적자 및 관리비 전가 우려 재설명</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#p2" target="_blank">#p2</a> 동대표 왜곡: 관리비 충당 오해 프레임 본문</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">3-4. '동대표가 설문 결과대로 강행한다'고 억지 비난을 하는 사람처럼 몰아간 점</div>
+    <ul>
+      <li>최초 댓글부터 설문 방식과 문항 설계의 보완을 제안했을 뿐, 설문 결과대로 강행한다고 언급한 적이 전혀 없음.</li>
+    </ul>
+    <div class="evidence">
+      
+      <div class="evidence-list">
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#1" target="_blank">#1</a> 입주민 최초 원문: 설문 방식·문항 보완 제안</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#3" target="_blank">#3</a> 입주민 원문: 사전 조사라도 기초 데이터 신뢰도가 중요하다는 설명</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#p2" target="_blank">#p2</a> 동대표 왜곡: 설문 강행 비난 프레임 본문</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">3-5. 공식 안건에도 없는 사안을 두고 굳이 회의장까지 찾아와 따지려는 사람인 것처럼 호도한 점</div>
+    <ul>
+      <li>정작 관련 안건이 상정되어 있지도 않은 상황에서 동대표 본인이 먼저 회의에 와서 얘기하라고 안내함.</li>
+    </ul>
+    <div class="evidence">
+      
+      <div class="evidence-list">
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#8" target="_blank">#8</a> 동대표: 회의 참석 요구 및 수정</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#9" target="_blank">#9</a> 입주민: 안건 부재 지적</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#p3" target="_blank">#p3</a> 동대표: 와서 무슨 얘기 할 건지 호도</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">3-6. "악감정이 많으신 분"이라며 개인적인 원한 때문에 딴지를 거는 진상 입주민처럼 몰아간 점</div>
+    <ul>
+      <li>최초 댓글부터 여러 차례 노고에 감사를 표하며 정중히 의견을 제시했고 동대표와 개인적인 친분이나 감정이 전혀 없음에도, 합리적인 문제 제기를 개인적 악감정으로 치부함.</li>
+    </ul>
+    <div class="evidence">
+      
+      <div class="evidence-list">
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#1" target="_blank">#1</a> 입주민 최초 원문: 노고 감사 표명</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#3" target="_blank">#3</a> 입주민 원문: 봉사 노고 감사 재표명</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#4" target="_blank">#4</a> 입주민 원문: 불필요한 논쟁 회피 목적의 정중한 문의</span>
+        <span class="ev-item"><a class="ref-badge" href="https://drasticjh-gif.github.io/aptner/content.html#20" target="_blank">#20</a> 동대표 왜곡: 악감정 낙인찍기 발언</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    전체 원문 및 발언별 사실관계 확인: https://drasticjh-gif.github.io/aptner/content.html
+  </div>
+
+</div>
+</body>
+</html>
